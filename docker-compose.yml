@@ -1,0 +1,67 @@
+version: "3.5"
+services:
+  # backend server
+  backend:
+    build:
+      context: ./microservices/backend
+      dockerfile: ./Dockerfile.dev
+    environment:
+      NODE_ENV: development
+      DB_HOST: "db"
+      DB_PORT: 3306
+      DB_USERNAME: root
+      DB_PASSWORD: password
+      DB_NAME: typescript-api
+      TYPEORM_SEEDING_FACTORIES: src/factories/**/*{.ts,.js}
+      TYPEORM_SEEDING_SEEDS: src/seeds/**/*{.ts,.js}
+      GOOGLE_APPLICATION_CREDENTIALS: firebase-admin.json
+    ports:
+      - 8080:8080
+    volumes:
+      - ./microservices/backend:/app
+      - ./firebase-admin.json:/app/firebase-admin.json
+    links:
+      - db
+
+  # swagger ui
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    container_name: "swagger-ui"
+    ports:
+      - 8082:8080
+    volumes:
+      - ./settings/openapi.yml:/openapi.yml
+    environment:
+      SWAGGER_JSON: /openapi.yml
+
+  # database asdmin
+  php-my-admin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=db
+      - PMA_USER=root
+      - PMA_PASSWORD=password
+    ports:
+      - 4040:80
+    volumes:
+      - sessions:/sessions
+    links:
+      - db
+
+  # database
+  db:
+    image: mysql:5.7
+    environment:
+      TZ: Asia/Tokyo
+      MYSQL_DATABASE: typescript-api
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - 3306:3306
+    volumes:
+      - storage:/var/lib/mysql
+      - ./microservices/mysql/conf.d:/etc/mysql/conf.d
+
+volumes:
+  sessions:
+  storage:

@@ -1,0 +1,351 @@
+openapi: 3.0.0
+info:
+  description: "typescript-api"
+  title: "typescript API"
+  version: "1.0.0"
+
+servers:
+  - url: http://localhost:8080/
+paths:
+  /users:
+    get:
+      description: get users
+      operationId: get users
+      responses:
+        200:
+          $ref: "#/components/responses/users"
+    post:
+      description: post user
+      operationId: post user
+      requestBody:
+        $ref: "#/components/requestBodies/user"
+      responses:
+        200:
+          $ref: "#/components/responses/user"
+  /users/{id}:
+    get:
+      description: get user
+      operationId: get user
+      parameters:
+        - $ref: "#/components/parameters/id"
+      responses:
+        200:
+          $ref: "#/components/responses/user"
+    put:
+      description: put user
+      operationId: put user
+      parameters:
+        - $ref: "#/components/parameters/id"
+      requestBody:
+        $ref: "#/components/requestBodies/user"
+      responses:
+        200:
+          $ref: "#/components/responses/user"
+  /topics:
+    get:
+      description: get topics
+      operationId: get topics
+      responses:
+        200:
+          $ref: "#/components/responses/topics"
+    post:
+      description: post topic
+      operationId: post topic
+      requestBody:
+        $ref: "#/components/requestBodies/topic"
+      responses:
+        200:
+          $ref: "#/components/responses/topic"
+  /topics/{id}:
+    get:
+      description: get topic
+      operationId: get topic
+      parameters:
+        - $ref: "#/components/parameters/id"
+      responses:
+        200:
+          $ref: "#/components/responses/topic"
+    put:
+      description: put topic
+      operationId: put topic
+      parameters:
+        - $ref: "#/components/parameters/id"
+      requestBody:
+        $ref: "#/components/requestBodies/topic"
+      responses:
+        200:
+          $ref: "#/components/responses/topic"
+  /categories:
+    get:
+      description: get categories
+      operationId: get categories
+      responses:
+        200:
+          $ref: "#/components/responses/category"
+    post:
+      description: post category
+      operationId: post category
+      requestBody:
+        $ref: "#/components/requestBodies/category"
+      responses:
+        200:
+          $ref: "#/components/responses/category"
+  /categories/{id}:
+    get:
+      description: get category
+      operationId: get category
+      parameters:
+        - $ref: "#/components/parameters/id"
+      responses:
+        200:
+          $ref: "#/components/responses/category"
+    put:
+      description: put category
+      operationId: put category
+      parameters:
+        - $ref: "#/components/parameters/id"
+      requestBody:
+        $ref: "#/components/requestBodies/category"
+      responses:
+        200:
+          $ref: "#/components/responses/category"
+  /tags:
+    get:
+      description: get tags
+      operationId: get tags
+      responses:
+        200:
+          $ref: "#/components/responses/tag"
+    post:
+      description: post tag
+      operationId: post tag
+      requestBody:
+        $ref: "#/components/requestBodies/tag"
+      responses:
+        200:
+          $ref: "#/components/responses/tag"
+  /tags/{id}:
+    get:
+      description: get tag
+      operationId: get tag
+      parameters:
+        - $ref: "#/components/parameters/id"
+      responses:
+        200:
+          $ref: "#/components/responses/tag"
+    put:
+      description: put tag
+      operationId: put tag
+      parameters:
+        - $ref: "#/components/parameters/id"
+      requestBody:
+        $ref: "#/components/requestBodies/tag"
+      responses:
+        200:
+          $ref: "#/components/responses/tag"
+components:
+  parameters:
+    id:
+      name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: integer
+        minimum: 0
+  schemas:
+    user:
+      type: object
+      properties:
+        id:
+          type: integer
+        uuid:
+          type: string
+        firebaseUuid:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+        imageUrl:
+          type: string
+        isActive:
+          type: boolean
+        isPremium:
+          type: boolean
+        userName:
+          type: string
+        discription:
+          type: string
+        createdAt:
+          type: string
+          format: date
+        updatedAt:
+          type: string
+          format: date
+      required:
+        - id
+        - firebaseUuid
+        - email
+        - name
+    topic:
+      type: object
+      properties:
+        id:
+          type: integer
+        userId:
+          type: integer
+        title:
+          type: string
+        content:
+          type: string
+        imageUrl:
+          type: string
+        isDraft:
+          type: boolean
+        isArchived:
+          type: boolean
+        createdAt:
+          type: string
+          format: date
+        updatedAt:
+          type: string
+          format: date
+        categories:
+          type: array
+          items:
+            $ref: "#/components/schemas/category"
+        tags:
+          type: array
+          items:
+            $ref: "#/components/schemas/tag"
+      required:
+        - id
+        - userId
+        - title
+        - content
+        - categories
+        - tags
+    category:
+      type: object
+      properties:
+        id:
+          type: integer
+        createUserId:
+          type: integer
+        name:
+          type: string
+        createdAt:
+          type: string
+          format: date
+        updatedAt:
+          type: string
+          format: date
+      required:
+        - id
+        - createUserId
+        - name
+    tag:
+      type: object
+      properties:
+        id:
+          type: integer
+        createUserId:
+          type: integer
+        name:
+          type: string
+        createdAt:
+          type: string
+          format: date
+        updatedAt:
+          type: string
+          format: date
+      required:
+        - id
+        - createUserId
+        - name
+  requestBodies:
+    user:
+      description: create user
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/user"
+    topic:
+      description: create topic
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/topic"
+    category:
+      description: create category
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/category"
+    tag:
+      description: create tag
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/tag"
+  responses:
+    users:
+      description: users
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/responses/user"
+    user:
+      description: user
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/user"
+    topics:
+      description: topics
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/responses/topic"
+    topic:
+      description: topic
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/topic"
+    categories:
+      description: categories
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/responses/categories"
+    category:
+      description: category
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/category"
+    tags:
+      description: tags
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "#/components/responses/tags"
+    tag:
+      description: tag
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/tag"
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
