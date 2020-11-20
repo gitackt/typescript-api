@@ -7,24 +7,24 @@
 ### Start
 
 ```sh
-sh restart.sh
+sh server_restart.sh
 ```
 
 ### OpenAPI
 
 ```sh
-sh generate.sh
+sh server_openapi_generate.sh
 ```
 
 ### Migration
 
 ```shell
-docker-compose exec backend ./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:generate -n $1
-docker-compose exec backend ./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run
+sh db_migration_generate.sh <MigrationName>
+sh db_migration_run.sh
 ```
 
 ### Seed
 
 ```shell
-docker-compose exec backend ./node_modules/.bin/ts-node ./node_modules/typeorm-seeding/dist/cli.js seed
+sh db_seed_run.sh
 ```
