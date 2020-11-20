@@ -1,5 +1,5 @@
 docker-compose down -v
 docker-compose build --parallel
 docker-compose up -d
-sh settings/scripts/migration/run.sh
-sh settings/scripts/seed/run.sh
+sh scripts/db_migration_run.sh
+sh scripts/db_seed_run.sh

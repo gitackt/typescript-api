@@ -3,7 +3,7 @@ services:
   # backend server
   backend:
     build:
-      context: ./microservices/backend
+      context: ./backend
       dockerfile: ./Dockerfile.dev
     environment:
       NODE_ENV: development
@@ -18,7 +18,7 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - ./microservices/backend:/app
+      - ./backend:/app
       - ./firebase-admin.json:/app/firebase-admin.json
     links:
       - db
@@ -60,7 +60,7 @@ services:
       - 3306:3306
     volumes:
       - storage:/var/lib/mysql
-      - ./microservices/mysql/conf.d:/etc/mysql/conf.d
+      - ./mysql/conf.d:/etc/mysql/conf.d
 
 volumes:
   sessions:

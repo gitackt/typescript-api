@@ -13,7 +13,7 @@ REST api server made with typescript. Seamlessly perform migration and seed gene
 After stopping all the running containers, start all the containers again.
 
 ```sh
-sh server_restart.sh
+sh scripts/server_restart.sh
 ```
 
 ### 1-2. OpenAPI
@@ -21,7 +21,7 @@ sh server_restart.sh
 Automatically generate API endpoint type from openapi schema.
 
 ```sh
-sh server_openapi_generate.sh
+sh scripts/server_openapi_generate.sh
 ```
 
 ### 1-3. Migration
@@ -29,8 +29,8 @@ sh server_openapi_generate.sh
 Generate a database migration file and perform the migration.
 
 ```shell
-sh db_migration_generate.sh <MigrationName>
-sh db_migration_run.sh
+sh scripts/db_migration_generate.sh <MigrationName>
+sh scripts/db_migration_run.sh
 ```
 
 ### 1-4. Seed
@@ -38,7 +38,7 @@ sh db_migration_run.sh
 Generates seed data defined in the factory bot.
 
 ```shell
-sh db_seed_run.sh
+sh scripts/db_seed_run.sh
 ```
 
 ## 2. Authentication
