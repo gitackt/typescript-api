@@ -62,6 +62,12 @@ Generates seed data defined in the factory bot.
 sh scripts/db_seed_run.sh
 ```
 
+### 1-6. e2e
+
+```shell
+sh scripts/test_e2e.sh
+```
+
 ## 2. Authentication
 
 ### 2-1. Firebase auth

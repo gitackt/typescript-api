@@ -20,3 +20,6 @@ yarn-error.log*
 
 firebase-admin.json
 backend/firebase-admin.json
+
+backend/cypress/screenshots/*
+backend/cypress/videos/*
