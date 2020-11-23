@@ -21,7 +21,15 @@ REST api server made with typescript. Seamlessly perform migration and seed gene
 
 ## 1. Script
 
-### 1-1. Start
+### 1-1. Setup
+
+This is an installation script for mac OS. If you are using a different OS, please install using the method described on this page. (https://github.com/OpenAPITools/openapi-generator)
+
+```
+brew install openapi-generator
+```
+
+### 1-2. Start
 
 After stopping all the running containers, start all the containers again.
 
@@ -29,7 +37,7 @@ After stopping all the running containers, start all the containers again.
 sh scripts/server_restart.sh
 ```
 
-### 1-2. OpenAPI
+### 1-3. OpenAPI
 
 Automatically generate API endpoint type from openapi schema.
 
@@ -37,7 +45,7 @@ Automatically generate API endpoint type from openapi schema.
 sh scripts/server_openapi_generate.sh
 ```
 
-### 1-3. Migration
+### 1-4. Migration
 
 Generate a database migration file and perform the migration.
 
@@ -46,7 +54,7 @@ sh scripts/db_migration_generate.sh <MigrationName>
 sh scripts/db_migration_run.sh
 ```
 
-### 1-4. Seed
+### 1-5. Seed
 
 Generates seed data defined in the factory bot.
 
@@ -66,4 +74,22 @@ https://tools.ietf.org/html/rfc6750
 
 ## 3. API
 
-## 4. ORM
+### 3-1. Schema
+
+### 3-2. Server
+
+### 3-3. Logging
+
+## 4. DB
+
+### 4-1. ORM
+
+### 4-2. Migration
+
+### 4-3. Seeding
+
+## 5. Test
+
+### 5-1. Unit test
+
+### 5-2. e2e test
