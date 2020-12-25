@@ -15,7 +15,7 @@
 
 REST api server made with typescript. Seamlessly perform migration and seed generation by making full use of the schema-driven endpoint and ORM functions. Since the environment is made with docker, you can develop in a stateless environment.
 
-- backend: http://localhost:8080/
+- api: http://localhost:8080/
 - swagger-ui: http://localhost:8082/
 - php-my-admin: http://localhost:4040/
 

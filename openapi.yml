@@ -4,144 +4,144 @@ info:
   title: typescript API
   version: 1.0.0
 servers:
-  - url: 'http://localhost:8080/'
+  - url: "http://localhost:8080/"
 paths:
   /users:
     get:
       description: get users
       operationId: get users
       responses:
-        '200':
-          $ref: '#/components/responses/users'
+        "200":
+          $ref: "#/components/responses/users"
     post:
       description: post user
       operationId: post user
       requestBody:
-        $ref: '#/components/requestBodies/user'
+        $ref: "#/components/requestBodies/user"
       responses:
-        '200':
-          $ref: '#/components/responses/user'
-  '/users/{id}':
+        "200":
+          $ref: "#/components/responses/user"
+  "/users/{id}":
     get:
       description: get user
       operationId: get user
       parameters:
-        - $ref: '#/components/parameters/id'
+        - $ref: "#/components/parameters/id"
       responses:
-        '200':
-          $ref: '#/components/responses/user'
+        "200":
+          $ref: "#/components/responses/user"
     put:
       description: put user
       operationId: put user
       parameters:
-        - $ref: '#/components/parameters/id'
+        - $ref: "#/components/parameters/id"
       requestBody:
-        $ref: '#/components/requestBodies/user'
+        $ref: "#/components/requestBodies/user"
       responses:
-        '200':
-          $ref: '#/components/responses/user'
+        "200":
+          $ref: "#/components/responses/user"
   /topics:
     get:
       description: get topics
       operationId: get topics
       responses:
-        '200':
-          $ref: '#/components/responses/topics'
+        "200":
+          $ref: "#/components/responses/topics"
     post:
       description: post topic
       operationId: post topic
       requestBody:
-        $ref: '#/components/requestBodies/topic'
+        $ref: "#/components/requestBodies/topic"
       responses:
-        '200':
-          $ref: '#/components/responses/topic'
-  '/topics/{id}':
+        "200":
+          $ref: "#/components/responses/topic"
+  "/topics/{id}":
     get:
       description: get topic
       operationId: get topic
       parameters:
-        - $ref: '#/components/parameters/id'
+        - $ref: "#/components/parameters/id"
       responses:
-        '200':
-          $ref: '#/components/responses/topic'
+        "200":
+          $ref: "#/components/responses/topic"
     put:
       description: put topic
       operationId: put topic
       parameters:
-        - $ref: '#/components/parameters/id'
+        - $ref: "#/components/parameters/id"
       requestBody:
-        $ref: '#/components/requestBodies/topic'
+        $ref: "#/components/requestBodies/topic"
       responses:
-        '200':
-          $ref: '#/components/responses/topic'
+        "200":
+          $ref: "#/components/responses/topic"
   /categories:
     get:
       description: get categories
       operationId: get categories
       responses:
-        '200':
-          $ref: '#/components/responses/category'
+        "200":
+          $ref: "#/components/responses/category"
     post:
       description: post category
       operationId: post category
       requestBody:
-        $ref: '#/components/requestBodies/category'
+        $ref: "#/components/requestBodies/category"
       responses:
-        '200':
-          $ref: '#/components/responses/category'
-  '/categories/{id}':
+        "200":
+          $ref: "#/components/responses/category"
+  "/categories/{id}":
     get:
       description: get category
       operationId: get category
       parameters:
-        - $ref: '#/components/parameters/id'
+        - $ref: "#/components/parameters/id"
       responses:
-        '200':
-          $ref: '#/components/responses/category'
+        "200":
+          $ref: "#/components/responses/category"
     put:
       description: put category
       operationId: put category
       parameters:
-        - $ref: '#/components/parameters/id'
+        - $ref: "#/components/parameters/id"
       requestBody:
-        $ref: '#/components/requestBodies/category'
+        $ref: "#/components/requestBodies/category"
       responses:
-        '200':
-          $ref: '#/components/responses/category'
+        "200":
+          $ref: "#/components/responses/category"
   /tags:
     get:
       description: get tags
       operationId: get tags
       responses:
-        '200':
-          $ref: '#/components/responses/tag'
+        "200":
+          $ref: "#/components/responses/tag"
     post:
       description: post tag
       operationId: post tag
       requestBody:
-        $ref: '#/components/requestBodies/tag'
+        $ref: "#/components/requestBodies/tag"
       responses:
-        '200':
-          $ref: '#/components/responses/tag'
-  '/tags/{id}':
+        "200":
+          $ref: "#/components/responses/tag"
+  "/tags/{id}":
     get:
       description: get tag
       operationId: get tag
       parameters:
-        - $ref: '#/components/parameters/id'
+        - $ref: "#/components/parameters/id"
       responses:
-        '200':
-          $ref: '#/components/responses/tag'
+        "200":
+          $ref: "#/components/responses/tag"
     put:
       description: put tag
       operationId: put tag
       parameters:
-        - $ref: '#/components/parameters/id'
+        - $ref: "#/components/parameters/id"
       requestBody:
-        $ref: '#/components/requestBodies/tag'
+        $ref: "#/components/requestBodies/tag"
       responses:
-        '200':
-          $ref: '#/components/responses/tag'
+        "200":
+          $ref: "#/components/responses/tag"
 components:
   parameters:
     id:
@@ -213,11 +213,11 @@ components:
         categories:
           type: array
           items:
-            $ref: '#/components/schemas/category'
+            $ref: "#/components/schemas/category"
         tags:
           type: array
           items:
-            $ref: '#/components/schemas/tag'
+            $ref: "#/components/schemas/tag"
       required:
         - id
         - userId
@@ -275,38 +275,38 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/user'
+            $ref: "#/components/schemas/user"
     topic:
       description: create topic
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/topic'
+            $ref: "#/components/schemas/topic"
     category:
       description: create category
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/category'
+            $ref: "#/components/schemas/category"
     tag:
       description: create tag
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/tag'
+            $ref: "#/components/schemas/tag"
   responses:
     users:
       description: users
       content:
         application/json:
           schema:
-            $ref: '#/components/responses/user'
+            $ref: "#/components/responses/user"
     user:
       description: user
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/user'
+            $ref: "#/components/schemas/user"
     topics:
       description: topics
       content:
@@ -314,13 +314,13 @@ components:
           schema:
             type: array
             items:
-              $ref: '#/components/responses/topic'
+              $ref: "#/components/responses/topic"
     topic:
       description: topic
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/topic'
+            $ref: "#/components/schemas/topic"
     categories:
       description: categories
       content:
@@ -328,13 +328,13 @@ components:
           schema:
             type: array
             items:
-              $ref: '#/components/responses/categories'
+              $ref: "#/components/responses/categories"
     category:
       description: category
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/category'
+            $ref: "#/components/schemas/category"
     tags:
       description: tags
       content:
@@ -342,13 +342,13 @@ components:
           schema:
             type: array
             items:
-              $ref: '#/components/responses/tags'
+              $ref: "#/components/responses/tags"
     tag:
       description: tag
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/tag'
+            $ref: "#/components/schemas/tag"
   securitySchemes:
     bearerAuth:
       type: http

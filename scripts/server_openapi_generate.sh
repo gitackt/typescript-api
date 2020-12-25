@@ -1,1 +1,1 @@
-openapi-generator generate -g typescript-axios -i ./openapi.yaml -o ./backend/src/types
+openapi-generator generate -g typescript-axios -i ./openapi.yaml -o ./api/src/interfaces

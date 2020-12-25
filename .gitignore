@@ -1,7 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-backend/node_modules
+api/node_modules
 
 # misc
 .DS_Store
@@ -19,7 +19,7 @@ yarn-error.log*
 .env.production.local
 
 firebase-admin.json
-backend/firebase-admin.json
+api/firebase-admin.json
 
-backend/cypress/screenshots/*
-backend/cypress/videos/*
+api/cypress/screenshots/*
+api/cypress/videos/*
