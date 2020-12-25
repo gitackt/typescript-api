@@ -24,9 +24,8 @@ services:
       - db
 
   # swagger ui
-  swagger-ui:
+  typescript-api-swagger-ui:
     image: swaggerapi/swagger-ui
-    container_name: "swagger-ui"
     ports:
       - 8082:8080
     volumes:
@@ -35,7 +34,7 @@ services:
       SWAGGER_JSON: /openapi.yml
 
   # database asdmin
-  php-my-admin:
+  typescript-api-php-my-admin:
     image: phpmyadmin/phpmyadmin
     environment:
       - PMA_ARBITRARY=1
