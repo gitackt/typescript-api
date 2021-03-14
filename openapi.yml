@@ -74,74 +74,6 @@ paths:
       responses:
         "200":
           $ref: "#/components/responses/topic"
-  /categories:
-    get:
-      description: get categories
-      operationId: get categories
-      responses:
-        "200":
-          $ref: "#/components/responses/category"
-    post:
-      description: post category
-      operationId: post category
-      requestBody:
-        $ref: "#/components/requestBodies/category"
-      responses:
-        "200":
-          $ref: "#/components/responses/category"
-  "/categories/{id}":
-    get:
-      description: get category
-      operationId: get category
-      parameters:
-        - $ref: "#/components/parameters/id"
-      responses:
-        "200":
-          $ref: "#/components/responses/category"
-    put:
-      description: put category
-      operationId: put category
-      parameters:
-        - $ref: "#/components/parameters/id"
-      requestBody:
-        $ref: "#/components/requestBodies/category"
-      responses:
-        "200":
-          $ref: "#/components/responses/category"
-  /tags:
-    get:
-      description: get tags
-      operationId: get tags
-      responses:
-        "200":
-          $ref: "#/components/responses/tag"
-    post:
-      description: post tag
-      operationId: post tag
-      requestBody:
-        $ref: "#/components/requestBodies/tag"
-      responses:
-        "200":
-          $ref: "#/components/responses/tag"
-  "/tags/{id}":
-    get:
-      description: get tag
-      operationId: get tag
-      parameters:
-        - $ref: "#/components/parameters/id"
-      responses:
-        "200":
-          $ref: "#/components/responses/tag"
-    put:
-      description: put tag
-      operationId: put tag
-      parameters:
-        - $ref: "#/components/parameters/id"
-      requestBody:
-        $ref: "#/components/requestBodies/tag"
-      responses:
-        "200":
-          $ref: "#/components/responses/tag"
 components:
   parameters:
     id:
@@ -158,23 +90,11 @@ components:
       properties:
         id:
           type: integer
-        uuid:
-          type: string
         firebaseUuid:
           type: string
         email:
           type: string
         name:
-          type: string
-        imageUrl:
-          type: string
-        isActive:
-          type: boolean
-        isPremium:
-          type: boolean
-        userName:
-          type: string
-        discription:
           type: string
         createdAt:
           type: string
@@ -214,24 +134,17 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/category"
-        tags:
-          type: array
-          items:
-            $ref: "#/components/schemas/tag"
       required:
         - id
         - userId
         - title
         - content
         - categories
-        - tags
     category:
       type: object
       properties:
         id:
           type: integer
-        createUserId:
-          type: integer
         name:
           type: string
         createdAt:
@@ -244,31 +157,6 @@ components:
         - id
         - createUserId
         - name
-    tag:
-      type: object
-      properties:
-        id:
-          type: integer
-        createUserId:
-          type: integer
-        name:
-          type: string
-        createdAt:
-          type: string
-          format: date
-        updatedAt:
-          type: string
-          format: date
-      required:
-        - id
-        - createUserId
-        - name
-    Term:
-      title: Term
-      type: object
-      properties:
-        id:
-          type: string
   requestBodies:
     user:
       description: create user
@@ -282,18 +170,6 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/topic"
-    category:
-      description: create category
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/category"
-    tag:
-      description: create tag
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/tag"
   responses:
     users:
       description: users
@@ -321,34 +197,6 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/topic"
-    categories:
-      description: categories
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: "#/components/responses/categories"
-    category:
-      description: category
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/category"
-    tags:
-      description: tags
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: "#/components/responses/tags"
-    tag:
-      description: tag
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/tag"
   securitySchemes:
     bearerAuth:
       type: http
