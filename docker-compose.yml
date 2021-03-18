@@ -1,6 +1,5 @@
 version: "3.5"
 services:
-  # api server
   api:
     build:
       context: ./api
@@ -23,32 +22,6 @@ services:
     links:
       - db
 
-  # swagger ui
-  typescript-api-swagger-ui:
-    image: swaggerapi/swagger-ui
-    ports:
-      - 8082:8080
-    volumes:
-      - ./openapi.yml:/openapi.yml
-    environment:
-      SWAGGER_JSON: /openapi.yml
-
-  # database asdmin
-  typescript-api-php-my-admin:
-    image: phpmyadmin/phpmyadmin
-    environment:
-      - PMA_ARBITRARY=1
-      - PMA_HOST=db
-      - PMA_USER=root
-      - PMA_PASSWORD=password
-    ports:
-      - 4040:80
-    volumes:
-      - sessions:/sessions
-    links:
-      - db
-
-  # database
   db:
     image: mysql:5.7
     environment:
@@ -61,6 +34,14 @@ services:
       - storage:/var/lib/mysql
       - ./mysql/conf.d:/etc/mysql/conf.d
 
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    ports:
+      - 8082:8080
+    volumes:
+      - ./openapi.yml:/openapi.yml
+    environment:
+      SWAGGER_JSON: /openapi.yml
+
 volumes:
-  sessions:
   storage:
