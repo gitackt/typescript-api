@@ -1,50 +1,44 @@
 import * as admin from 'firebase-admin'
 import httpContext from 'express-http-context'
 import { Request, Response } from 'express'
-import { getRepository } from 'typeorm'
 
 import { User } from '../domain/models/User'
+import { UserRepository } from '../domain/repository/UserRepository'
 
-export const auth = (req: Request, res: Response, next: any, auth: admin.auth.Auth) => {
+export const auth = (
+  req: Request,
+  res: Response,
+  next: any,
+  auth: admin.auth.Auth,
+  userRepository: UserRepository,
+) => {
   const tokenHeader = req.headers.authorization
   if (!tokenHeader || tokenHeader.split(' ')[0] !== 'Bearer') {
-    res.status(500).send({ message: 'token not set' })
+    res.status(401).send({ message: 'token not set' })
     return
   }
 
   auth
     .verifyIdToken(tokenHeader.split(' ')[1])
     .then(async token => {
-      const userId = token.uid
-      let user = await getRepository(User).findOne({ firebaseUuid: userId })
+      const uuid = token.uid
+      let user = await userRepository.findByUuid(uuid)
       if (user === undefined) {
         user = new User()
-        user.firebaseUuid = userId
+        user.uuid = uuid
         user.email = token.email
         user.name = token.name
         user.userName = token.name
+        user.imageUrl = token.picture
         user.isActive = true
-        await getRepository(User).save(user)
-      }
-
-      if (user.isAdmin) {
-        httpContext.set('adminUserId', user.id)
+        user = await userRepository.createUser(user)
       }
       httpContext.set('userId', user.id)
       next()
     })
-    .catch(() => {
-      res.status(500).send({ message: 'unauthorized' })
+    .catch(e => {
+      console.error(e.message)
+      res.status(401).send({ message: 'unauthorized' })
       return
     })
-}
-
-export const isAdmin = async (req: Request, res: Response, next: any) => {
-  const adminUserId = httpContext.get('adminUserId')
-  if (!adminUserId) {
-    res.status(500).send({ message: 'not admin' })
-    return
-  }
-  next()
-  return
 }

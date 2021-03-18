@@ -20,13 +20,12 @@ interface DBQuery {
 }
 
 export const sendLog = (logType: LogType, rowData: any) => {
-  const log: Log = {
-    data: JSON.stringify(rowData),
-    logType,
-    timeStamp: new Date().getTime(),
-  }
-  // Send logs to cloud storage, s3, stdout...
-  console.log(log.timeStamp + ': ' + log.logType)
+  // const log: Log = {
+  //   data: JSON.stringify(rowData),
+  //   logType,
+  //   timeStamp: new Date().getTime(),
+  // }
+  // console.log(log)
 }
 
 export const httpLogger = (req: Request, res: Response, next: any) => {
