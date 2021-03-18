@@ -87,24 +87,6 @@ export interface Topic {
      * @type {string}
      * @memberof Topic
      */
-    imageUrl?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Topic
-     */
-    isDraft?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Topic
-     */
-    isArchived?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof Topic
-     */
     createdAt?: string;
     /**
      * 
@@ -204,10 +186,19 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * get topics
+         * @param {'ASC' | 'DESC'} order order
+         * @param {number} limit limit
+         * @param {number} offset offset
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTopics: async (options: any = {}): Promise<RequestArgs> => {
+        getTopics: async (order: 'ASC' | 'DESC', limit: number, offset: number, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'order' is not null or undefined
+            assertParamExists('getTopics', 'order', order)
+            // verify required parameter 'limit' is not null or undefined
+            assertParamExists('getTopics', 'limit', limit)
+            // verify required parameter 'offset' is not null or undefined
+            assertParamExists('getTopics', 'offset', offset)
             const localVarPath = `/topics`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -219,6 +210,18 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (order !== undefined) {
+                localVarQueryParameter['order'] = order;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
 
 
     
@@ -455,11 +458,14 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * get topics
+         * @param {'ASC' | 'DESC'} order order
+         * @param {number} limit limit
+         * @param {number} offset offset
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTopics(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Topic>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getTopics(options);
+        async getTopics(order: 'ASC' | 'DESC', limit: number, offset: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Topic>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTopics(order, limit, offset, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -544,11 +550,14 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * get topics
+         * @param {'ASC' | 'DESC'} order order
+         * @param {number} limit limit
+         * @param {number} offset offset
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTopics(options?: any): AxiosPromise<Array<Topic>> {
-            return localVarFp.getTopics(options).then((request) => request(axios, basePath));
+        getTopics(order: 'ASC' | 'DESC', limit: number, offset: number, options?: any): AxiosPromise<Array<Topic>> {
+            return localVarFp.getTopics(order, limit, offset, options).then((request) => request(axios, basePath));
         },
         /**
          * get user
@@ -609,12 +618,95 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
 };
 
 /**
+ * DefaultApi - interface
+ * @export
+ * @interface DefaultApi
+ */
+export interface DefaultApiInterface {
+    /**
+     * get topic
+     * @param {number} id id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    getTopic(id: number, options?: any): AxiosPromise<Topic>;
+
+    /**
+     * get topics
+     * @param {'ASC' | 'DESC'} order order
+     * @param {number} limit limit
+     * @param {number} offset offset
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    getTopics(order: 'ASC' | 'DESC', limit: number, offset: number, options?: any): AxiosPromise<Array<Topic>>;
+
+    /**
+     * get user
+     * @param {number} id id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    getUser(id: number, options?: any): AxiosPromise<User>;
+
+    /**
+     * get users
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    getUsers(options?: any): AxiosPromise<User>;
+
+    /**
+     * post topic
+     * @param {Topic} [topic] create topic
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    postTopic(topic?: Topic, options?: any): AxiosPromise<Topic>;
+
+    /**
+     * post user
+     * @param {User} [user] create user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    postUser(user?: User, options?: any): AxiosPromise<User>;
+
+    /**
+     * put topic
+     * @param {number} id id
+     * @param {Topic} [topic] create topic
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    putTopic(id: number, topic?: Topic, options?: any): AxiosPromise<Topic>;
+
+    /**
+     * put user
+     * @param {number} id id
+     * @param {User} [user] create user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    putUser(id: number, user?: User, options?: any): AxiosPromise<User>;
+
+}
+
+/**
  * DefaultApi - object-oriented interface
  * @export
  * @class DefaultApi
  * @extends {BaseAPI}
  */
-export class DefaultApi extends BaseAPI {
+export class DefaultApi extends BaseAPI implements DefaultApiInterface {
     /**
      * get topic
      * @param {number} id id
@@ -628,12 +720,15 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * get topics
+     * @param {'ASC' | 'DESC'} order order
+     * @param {number} limit limit
+     * @param {number} offset offset
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public getTopics(options?: any) {
-        return DefaultApiFp(this.configuration).getTopics(options).then((request) => request(this.axios, this.basePath));
+    public getTopics(order: 'ASC' | 'DESC', limit: number, offset: number, options?: any) {
+        return DefaultApiFp(this.configuration).getTopics(order, limit, offset, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
