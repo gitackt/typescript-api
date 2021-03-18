@@ -10,8 +10,8 @@ module.exports = {
   synchronize: false,
   logging: true,
   entities: ['src/domain/models/**/*.ts'],
-  migrations: ['src/orm/migrations/**/*.ts'],
-  subscribers: ['src/orm/subscribers/**/*.ts'],
+  migrations: ['src/migrations/**/*.ts'],
+  subscribers: ['src/subscribers/**/*.ts'],
   seeds: ['src/seeds/**/*{.ts,.js}'],
   factories: ['src/factories/**/*{.ts,.js}'],
   cli: {

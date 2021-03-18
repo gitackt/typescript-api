@@ -24,15 +24,6 @@ export class User {
   @IsEmail()
   email?: string
 
-  @Column({ nullable: true, default: null })
-  imageUrl?: string
-
-  @Column()
-  userName?: string
-
-  @Column({ default: false })
-  isActive?: boolean
-
   @CreateDateColumn()
   readonly createdAt?: Date
 

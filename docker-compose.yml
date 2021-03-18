@@ -6,7 +6,7 @@ services:
       dockerfile: ./Dockerfile.dev
     environment:
       NODE_ENV: development
-      DB_HOST: "db"
+      DB_HOST: db
       DB_PORT: 3306
       DB_USERNAME: root
       DB_PASSWORD: password
@@ -28,11 +28,11 @@ services:
       TZ: Asia/Tokyo
       MYSQL_DATABASE: typescript-api
       MYSQL_ROOT_PASSWORD: password
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     ports:
       - 3306:3306
     volumes:
       - storage:/var/lib/mysql
-      - ./mysql/conf.d:/etc/mysql/conf.d
 
   swagger-ui:
     image: swaggerapi/swagger-ui
