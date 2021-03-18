@@ -48,7 +48,6 @@ const main = async () => {
         return auth(req, res, next, admin.auth(), userRepository)
       })
 
-      app.get('/users', userController.users)
       app.get('/user/:id', userController.user)
 
       app.listen({ port }, () => console.log(`server on http://localhost:${port}`))

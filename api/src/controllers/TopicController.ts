@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import httpContext from 'express-http-context'
 
 import { TopicService } from '../domain/service/TopicService'
-import { Topic } from '../interfaces/api'
+import { Topic, Category } from '../interfaces/api'
 import { Topic as TopicModel } from '../domain/models/Topic'
 
 export class TopicController {
@@ -51,6 +51,7 @@ export class TopicController {
 const topicConverter = (model: TopicModel): Topic => {
   const response: Topic = {
     id: model.id || 0,
+    userId: model.user?.id || 0,
     title: model.title || '',
     content: model.content || '',
     createdAt: model.createdAt ? model.createdAt.toISOString() : '',

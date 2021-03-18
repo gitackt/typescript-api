@@ -7,7 +7,6 @@ define(Topic, (faker: typeof Faker) => {
   const content = faker.random.words(100)
 
   const topic = new Topic()
-  topic.userId = 1
   topic.title = title
   topic.content = content
   return topic

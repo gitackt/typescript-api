@@ -41,6 +41,8 @@ export class UserController {
 const userConverter = (model: UserModel): User => {
   const response: User = {
     id: model.id || 0,
+    name: model.name || '',
+    email: model.email || '',
     createdAt: model.createdAt ? model.createdAt.toISOString() : '',
     updatedAt: model.updatedAt ? model.updatedAt.toISOString() : '',
   }

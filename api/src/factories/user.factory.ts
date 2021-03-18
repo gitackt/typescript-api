@@ -12,7 +12,6 @@ define(User, (faker: typeof Faker) => {
 
   const user = new User()
   user.name = `${firstName} ${lastName}`
-  user.userName = userName
   user.email = email
   user.uuid = uuid
   return user

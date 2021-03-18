@@ -118,8 +118,6 @@ components:
       properties:
         id:
           type: integer
-        firebaseUuid:
-          type: string
         email:
           type: string
         name:
@@ -132,7 +130,6 @@ components:
           format: date
       required:
         - id
-        - firebaseUuid
         - email
         - name
     topic:
@@ -161,7 +158,6 @@ components:
         - userId
         - title
         - content
-        - categories
     category:
       type: object
       properties:

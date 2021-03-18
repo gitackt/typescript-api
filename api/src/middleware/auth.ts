@@ -28,9 +28,6 @@ export const auth = (
         user.uuid = uuid
         user.email = token.email
         user.name = token.name
-        user.userName = token.name
-        user.imageUrl = token.picture
-        user.isActive = true
         user = await userRepository.createUser(user)
       }
       httpContext.set('userId', user.id)
