@@ -17,7 +17,7 @@ paths:
       description: post user
       operationId: post user
       requestBody:
-        $ref: "#/components/requestBodies/user"
+        $ref: "#/components/requestBodies/createUser"
       responses:
         "200":
           $ref: "#/components/responses/user"
@@ -70,7 +70,7 @@ paths:
       parameters:
         - $ref: "#/components/parameters/id"
       requestBody:
-        $ref: "#/components/requestBodies/topic"
+        $ref: "#/components/requestBodies/createTopic"
       responses:
         "200":
           $ref: "#/components/responses/topic"
