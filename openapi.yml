@@ -21,7 +21,7 @@ paths:
       responses:
         "200":
           $ref: "#/components/responses/user"
-  "/users/{id}":
+  /users/{id}:
     get:
       description: get user
       operationId: get user
@@ -36,7 +36,7 @@ paths:
       parameters:
         - $ref: "#/components/parameters/id"
       requestBody:
-        $ref: "#/components/requestBodies/user"
+        $ref: "#/components/requestBodies/createUser"
       responses:
         "200":
           $ref: "#/components/responses/user"
@@ -51,11 +51,11 @@ paths:
       description: post topic
       operationId: post topic
       requestBody:
-        $ref: "#/components/requestBodies/topic"
+        $ref: "#/components/requestBodies/createTopic"
       responses:
         "200":
           $ref: "#/components/responses/topic"
-  "/topics/{id}":
+  /topics/{id}:
     get:
       description: get topic
       operationId: get topic
@@ -118,12 +118,6 @@ components:
           type: string
         content:
           type: string
-        imageUrl:
-          type: string
-        isDraft:
-          type: boolean
-        isArchived:
-          type: boolean
         createdAt:
           type: string
           format: date
@@ -158,13 +152,13 @@ components:
         - createUserId
         - name
   requestBodies:
-    user:
+    createUser:
       description: create user
       content:
         application/json:
           schema:
             $ref: "#/components/schemas/user"
-    topic:
+    createTopic:
       description: create topic
       content:
         application/json:

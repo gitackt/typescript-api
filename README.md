@@ -17,7 +17,6 @@ REST api server made with typescript. Seamlessly perform migration and seed gene
 
 - api: http://localhost:8080/
 - swagger-ui: http://localhost:8082/
-- php-my-admin: http://localhost:4040/
 
 ## 1. Script
 
@@ -34,7 +33,7 @@ brew install openapi-generator
 After stopping all the running containers, start all the containers again.
 
 ```sh
-sh scripts/server_restart.sh
+sh scripts/restart.sh
 ```
 
 ### 1-3. OpenAPI
@@ -42,7 +41,7 @@ sh scripts/server_restart.sh
 Automatically generate API endpoint type from openapi schema.
 
 ```sh
-sh scripts/server_openapi_generate.sh
+sh scripts/openapi.sh
 ```
 
 ### 1-4. Migration
@@ -50,8 +49,8 @@ sh scripts/server_openapi_generate.sh
 Generate a database migration file and perform the migration.
 
 ```shell
-sh scripts/db_migration_generate.sh <MigrationName>
-sh scripts/db_migration_run.sh
+sh scripts/migration.sh <MigrationName>
+sh scripts/migrate.sh
 ```
 
 ### 1-5. Seed
@@ -59,13 +58,7 @@ sh scripts/db_migration_run.sh
 Generates seed data defined in the factory bot.
 
 ```shell
-sh scripts/db_seed_run.sh
-```
-
-### 1-6. e2e
-
-```shell
-sh scripts/test_e2e.sh
+sh scripts/seed.sh
 ```
 
 ## 2. Authentication
@@ -77,25 +70,3 @@ Firebase auth is used for the authentication board. After getting the access tok
 https://firebase.google.com/docs/database/rest/auth?hl=ja
 
 https://tools.ietf.org/html/rfc6750
-
-## 3. API
-
-### 3-1. Schema
-
-### 3-2. Server
-
-### 3-3. Logging
-
-## 4. DB
-
-### 4-1. ORM
-
-### 4-2. Migration
-
-### 4-3. Seeding
-
-## 5. Test
-
-### 5-1. Unit test
-
-### 5-2. e2e test
