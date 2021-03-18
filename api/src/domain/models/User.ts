@@ -1,26 +1,28 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany, JoinTable } from 'typeorm'
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToMany,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm'
 import { IsEmail } from 'class-validator'
 import { Topic } from './Topic'
-import { Tag } from './Tag'
-import { Category } from './Category'
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
   id?: number
 
-  @PrimaryGeneratedColumn('uuid')
+  @Column()
   uuid?: string
 
   @Column()
-  firebaseUuid?: string
+  name?: string
 
   @Column()
   @IsEmail()
   email?: string
-
-  @Column()
-  name?: string
 
   @Column({ nullable: true, default: null })
   imageUrl?: string
@@ -28,26 +30,15 @@ export class User {
   @Column()
   userName?: string
 
-  @Column({ nullable: true, default: null })
-  discription?: string
-
-  @Column({ default: false })
-  isAdmin?: boolean
-
   @Column({ default: false })
   isActive?: boolean
 
-  @Column({ default: false })
-  isPremium?: boolean
+  @CreateDateColumn()
+  readonly createdAt?: Date
+
+  @UpdateDateColumn()
+  readonly updatedAt?: Date
 
   @OneToMany(type => Topic, topic => topic.user)
   topics?: Topic[]
-
-  @ManyToMany(type => Category)
-  @JoinTable()
-  categories?: Category[]
-
-  @ManyToMany(type => Tag)
-  @JoinTable()
-  tags?: Tag[]
 }
