@@ -1,8 +1,6 @@
 # typescript-api
 
-[![GitHub forks](https://img.shields.io/github/forks/gitackt/typescript-api?color=%2369cebf)](https://github.com/gitackt/typescript-api/network)
-[![GitHub stars](https://img.shields.io/github/stars/gitackt/typescript-api?color=%2369cebf)](https://github.com/gitackt/typescript-api/stargazers)
-[![GitHub contributors](https://img.shields.io/github/contributors/gitackt/typescript-api?color=%2369cebf)](https://github.com/gitackt/typescript-api/stargazers)
+typescript REST api server.
 
 - Language: [Typescript](https://www.typescriptlang.org/ "Typescript")
 - Server: [Express](https://expressjs.com/ja/ "Express")
