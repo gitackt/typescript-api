@@ -17,3 +17,4 @@ define(User, (faker: typeof Faker) => {
   user.firebaseUuid = uuid
   return user
 })
+
