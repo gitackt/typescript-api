@@ -41,14 +41,17 @@ const main = async () => {
       app.use(httpContext.middleware)
       app.use(httpLogger)
 
-      app.get('/topics', topicController.topics)
-      app.get('/topics/:id', topicController.topic)
+      app.get('/topics', topicController.topics.bind(topicController))
+      app.get('/topics/:id', topicController.topic.bind(topicController))
 
       app.use((req: Request, res: Response, next: any) => {
         return auth(req, res, next, admin.auth(), userRepository)
       })
 
-      app.get('/user/:id', userController.user)
+      app.get('/user', userController.user.bind(userController))
+      app.put('/user', userController.updateUser.bind(userController))
+      app.post('/topics', topicController.createTopic.bind(topicController))
+      app.put('/topics', topicController.updateTopic.bind(topicController))
 
       app.listen({ port }, () => console.log(`server on http://localhost:${port}`))
     })
