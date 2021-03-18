@@ -12,11 +12,11 @@ module.exports = {
   entities: ['src/domain/models/**/*.ts'],
   migrations: ['src/orm/migrations/**/*.ts'],
   subscribers: ['src/orm/subscribers/**/*.ts'],
-  seeds: ['src/orm/seeds/**/*{.ts,.js}'],
-  factories: ['src/orm/factories/**/*{.ts,.js}'],
+  seeds: ['src/seeds/**/*{.ts,.js}'],
+  factories: ['src/factories/**/*{.ts,.js}'],
   cli: {
     entitiesDir: 'src/domain/models',
-    migrationsDir: 'src/orm/migrations',
-    subscribersDir: 'src/orm/subscribers',
+    migrationsDir: 'src/migrations',
+    subscribersDir: 'src/subscribers',
   },
 }
