@@ -1,19 +1,18 @@
-// TypeORM
 import { Repository, getRepository } from 'typeorm'
 import 'reflect-metadata'
 
 import { User } from '../models/User'
 
 export class UserRepository {
-  userRepository: Repository<User> = getRepository(User)
+  private readonly userRepository: Repository<User> = getRepository(User)
 
-  async getUser(id: string) {
-    const response = await this.userRepository.findOne({ id: Number(id) })
+  async getUser(id: number) {
+    const response = await this.userRepository.findOne({ id: id })
     return response
   }
 
-  async getUsers() {
-    const response = await this.userRepository.find()
+  async findByUuid(uuid: string) {
+    const response = await this.userRepository.findOne({ uuid: uuid })
     return response
   }
 
@@ -23,12 +22,12 @@ export class UserRepository {
   }
 
   async updateUser(user: User) {
-    const response = await this.userRepository.update({ id: Number(user.id!) }, user)
+    const response = await this.userRepository.update({ id: user.id }, user)
     return response
   }
 
   async deleteUser(user: User) {
-    const response = await this.userRepository.delete({ id: Number(user.id!) })
+    const response = await this.userRepository.delete({ id: user.id })
     return response
   }
 }

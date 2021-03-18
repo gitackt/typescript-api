@@ -14,7 +14,6 @@ define(User, (faker: typeof Faker) => {
   user.name = `${firstName} ${lastName}`
   user.userName = userName
   user.email = email
-  user.firebaseUuid = uuid
+  user.uuid = uuid
   return user
 })
-

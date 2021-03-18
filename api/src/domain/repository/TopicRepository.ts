@@ -1,34 +1,39 @@
-// TypeORM
 import { Repository, getRepository } from 'typeorm'
 import 'reflect-metadata'
 
 import { Topic } from '../models/Topic'
+import { User } from '../models/User'
 
 export class TopicRepository {
-  topicRepository: Repository<Topic> = getRepository(Topic)
+  private readonly topicRepository: Repository<Topic> = getRepository(Topic)
 
-  async getTopic(id: string) {
-    const response = await this.topicRepository.findOne({ id: Number(id) })
+  async getTopic(id: number) {
+    const response = await this.topicRepository.findOne({ id: id })
     return response
   }
 
-  async getTopics() {
-    const response = await this.topicRepository.find()
+  async getTopics(order: 'ASC' | 'DESC', limit: number, offset: number) {
+    const response = await this.topicRepository.find({
+      order: { id: order },
+      take: limit,
+      skip: offset,
+    })
     return response
   }
 
-  async createTopic(topic: Topic) {
+  async createTopic(topic: Topic, user: User) {
+    topic.user = user
     const response = await this.topicRepository.save(topic)
     return response
   }
 
-  async updateTopic(topic: Topic) {
-    const response = await this.topicRepository.update({ id: Number(topic.id!) }, topic)
+  async updateTopic(topic: Topic, user: User) {
+    const response = await this.topicRepository.update({ id: topic.id, user: user }, topic)
     return response
   }
 
   async deleteTopic(topic: Topic) {
-    const response = await this.topicRepository.delete({ id: Number(topic.id!) })
+    const response = await this.topicRepository.delete({ id: topic.id })
     return response
   }
 }
