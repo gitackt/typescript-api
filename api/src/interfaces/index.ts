@@ -1,4 +1,5 @@
-// tslint:disable
+/* tslint:disable */
+/* eslint-disable */
 /**
  * typescript API
  * typescript-api
@@ -14,3 +15,4 @@
 
 export * from "./api";
 export * from "./configuration";
+
