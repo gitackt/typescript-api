@@ -44,6 +44,10 @@ paths:
     get:
       description: get topics
       operationId: get topics
+      parameters:
+        - $ref: "#/components/parameters/order"
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/offset"
       responses:
         "200":
           $ref: "#/components/responses/topics"
@@ -84,6 +88,30 @@ components:
       schema:
         type: integer
         minimum: 0
+    order:
+      name: order
+      in: query
+      description: order
+      required: true
+      schema:
+        type: string
+        enum:
+          - ASC
+          - DESC
+    limit:
+      name: limit
+      in: query
+      description: limit
+      required: true
+      schema:
+        type: integer
+    offset:
+      name: offset
+      in: query
+      description: offset
+      required: true
+      schema:
+        type: integer
   schemas:
     user:
       type: object
