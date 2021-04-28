@@ -29,8 +29,10 @@ const main = async () => {
     .then(() => {
       const userRepository = new UserRepository()
       const topicRepository = new TopicRepository()
+
       const userService = new UserService(userRepository)
       const topicService = new TopicService(topicRepository)
+
       const userController = new UserController(userService)
       const topicController = new TopicController(topicService)
 

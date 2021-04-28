@@ -4,80 +4,80 @@ info:
   title: typescript API
   version: 1.0.0
 servers:
-  - url: "http://localhost:8080/"
+  - url: 'http://localhost:8080/'
 paths:
   /users:
     get:
       description: get users
       operationId: get users
       responses:
-        "200":
-          $ref: "#/components/responses/users"
+        '200':
+          $ref: '#/components/responses/users'
     post:
       description: post user
       operationId: post user
       requestBody:
-        $ref: "#/components/requestBodies/createUser"
+        $ref: '#/components/requestBodies/createUser'
       responses:
-        "200":
-          $ref: "#/components/responses/user"
+        '200':
+          $ref: '#/components/responses/user'
   /users/{id}:
     get:
       description: get user
       operationId: get user
       parameters:
-        - $ref: "#/components/parameters/id"
+        - $ref: '#/components/parameters/id'
       responses:
-        "200":
-          $ref: "#/components/responses/user"
+        '200':
+          $ref: '#/components/responses/user'
     put:
       description: put user
       operationId: put user
       parameters:
-        - $ref: "#/components/parameters/id"
+        - $ref: '#/components/parameters/id'
       requestBody:
-        $ref: "#/components/requestBodies/createUser"
+        $ref: '#/components/requestBodies/createUser'
       responses:
-        "200":
-          $ref: "#/components/responses/user"
+        '200':
+          $ref: '#/components/responses/user'
   /topics:
     get:
       description: get topics
       operationId: get topics
       parameters:
-        - $ref: "#/components/parameters/order"
-        - $ref: "#/components/parameters/limit"
-        - $ref: "#/components/parameters/offset"
+        - $ref: '#/components/parameters/order'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
       responses:
-        "200":
-          $ref: "#/components/responses/topics"
+        '200':
+          $ref: '#/components/responses/topics'
     post:
       description: post topic
       operationId: post topic
       requestBody:
-        $ref: "#/components/requestBodies/createTopic"
+        $ref: '#/components/requestBodies/createTopic'
       responses:
-        "200":
-          $ref: "#/components/responses/topic"
+        '200':
+          $ref: '#/components/responses/topic'
   /topics/{id}:
     get:
       description: get topic
       operationId: get topic
       parameters:
-        - $ref: "#/components/parameters/id"
+        - $ref: '#/components/parameters/id'
       responses:
-        "200":
-          $ref: "#/components/responses/topic"
+        '200':
+          $ref: '#/components/responses/topic'
     put:
       description: put topic
       operationId: put topic
       parameters:
-        - $ref: "#/components/parameters/id"
+        - $ref: '#/components/parameters/id'
       requestBody:
-        $ref: "#/components/requestBodies/createTopic"
+        $ref: '#/components/requestBodies/createTopic'
       responses:
-        "200":
-          $ref: "#/components/responses/topic"
+        '200':
+          $ref: '#/components/responses/topic'
 components:
   parameters:
     id:
@@ -152,7 +152,7 @@ components:
         categories:
           type: array
           items:
-            $ref: "#/components/schemas/category"
+            $ref: '#/components/schemas/category'
       required:
         - id
         - userId
@@ -181,26 +181,26 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/user"
+            $ref: '#/components/schemas/user'
     createTopic:
       description: create topic
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/topic"
+            $ref: '#/components/schemas/topic'
   responses:
     users:
       description: users
       content:
         application/json:
           schema:
-            $ref: "#/components/responses/user"
+            $ref: '#/components/responses/user'
     user:
       description: user
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/user"
+            $ref: '#/components/schemas/user'
     topics:
       description: topics
       content:
@@ -208,13 +208,13 @@ components:
           schema:
             type: array
             items:
-              $ref: "#/components/responses/topic"
+              $ref: '#/components/responses/topic'
     topic:
       description: topic
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/topic"
+            $ref: '#/components/schemas/topic'
   securitySchemes:
     bearerAuth:
       type: http
