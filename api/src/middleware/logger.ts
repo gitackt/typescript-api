@@ -20,16 +20,33 @@ interface DBQuery {
 }
 
 export const sendLog = (logType: LogType, rowData: any) => {
-  // const log: Log = {
-  //   data: JSON.stringify(rowData),
-  //   logType,
-  //   timeStamp: new Date().getTime(),
-  // }
-  // console.log(log)
+  const log: Log = {
+    data: JSON.stringify(rowData),
+    logType,
+    timeStamp: new Date().getTime(),
+  }
+  console.log(log)
 }
 
 export const httpLogger = (req: Request, res: Response, next: any) => {
-  requestLogger(req)
+  const params = {
+    headers: req.headers,
+    userAgent: req.headers['user-agent'],
+    referer: req.headers.referer,
+    body: req.body,
+    baseUrl: req.baseUrl,
+    cookies: req.cookies,
+    hostname: req.hostname,
+    ip: req.ip,
+    ips: req.ips,
+    originalUrl: req.originalUrl,
+    params: req.params,
+    path: req.path,
+    query: req.query,
+    url: req.url,
+  }
+  sendLog(LogType.ServerRequest, Object.assign(params))
+
   next()
 }
 
@@ -52,24 +69,4 @@ export class DatabaseQueryLogger implements Logger {
   logSchemaBuild() {}
   logMigration() {}
   log() {}
-}
-
-export const requestLogger = (req: Request) => {
-  const params = {
-    headers: req.headers,
-    userAgent: req.headers['user-agent'],
-    referer: req.headers.referer,
-    body: req.body,
-    baseUrl: req.baseUrl,
-    cookies: req.cookies,
-    hostname: req.hostname,
-    ip: req.ip,
-    ips: req.ips,
-    originalUrl: req.originalUrl,
-    params: req.params,
-    path: req.path,
-    query: req.query,
-    url: req.url,
-  }
-  sendLog(LogType.ServerRequest, Object.assign(params))
 }

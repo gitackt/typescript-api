@@ -1,5 +1,5 @@
 import { createConnection, getConnectionOptions } from 'typeorm'
-import express, { Request, Response } from 'express'
+import express, { Request, Response, NextFunction } from 'express'
 import httpContext from 'express-http-context'
 import cors from 'cors'
 import 'reflect-metadata'
@@ -46,9 +46,7 @@ const main = async () => {
       app.get('/topics', topicController.topics.bind(topicController))
       app.get('/topics/:id', topicController.topic.bind(topicController))
 
-      app.use((req: Request, res: Response, next: any) => {
-        return auth(req, res, next, admin.auth(), userRepository)
-      })
+      app.use((req: Request, res: Response, next: NextFunction) => auth(req, res, next))
 
       app.get('/user', userController.user.bind(userController))
       app.put('/user', userController.updateUser.bind(userController))
