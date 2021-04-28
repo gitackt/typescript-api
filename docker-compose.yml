@@ -30,7 +30,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - storage:/var/lib/mysql
+      - database:/var/lib/mysql
 
   swagger-ui:
     image: swaggerapi/swagger-ui
@@ -42,4 +42,4 @@ services:
       SWAGGER_JSON: /openapi.yml
 
 volumes:
-  storage:
+  database:
