@@ -4,7 +4,6 @@ import httpContext from 'express-http-context'
 import cors from 'cors'
 import 'reflect-metadata'
 import { json } from 'body-parser'
-import * as admin from 'firebase-admin'
 
 import { auth } from './middleware/auth'
 import { httpLogger, DatabaseQueryLogger } from './middleware/logger'
@@ -14,10 +13,6 @@ import { UserService } from './domain/service/UserService'
 import { TopicService } from './domain/service/TopicService'
 import { UserController } from './controllers/UserController'
 import { TopicController } from './controllers/TopicController'
-
-admin.initializeApp({
-  credential: admin.credential.applicationDefault(),
-})
 
 const port = process.env.PORT || 8080
 

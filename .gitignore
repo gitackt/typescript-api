@@ -18,8 +18,5 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-firebase-admin.json
-api/firebase-admin.json
-
 api/cypress/screenshots/*
 api/cypress/videos/*

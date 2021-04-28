@@ -13,12 +13,10 @@ services:
       DB_NAME: typescript-api
       TYPEORM_SEEDING_FACTORIES: src/factories/**/*{.ts,.js}
       TYPEORM_SEEDING_SEEDS: src/seeds/**/*{.ts,.js}
-      GOOGLE_APPLICATION_CREDENTIALS: firebase-admin.json
     ports:
       - 8080:8080
     volumes:
       - ./api:/app
-      - ./firebase-admin.json:/app/firebase-admin.json
     links:
       - db
 

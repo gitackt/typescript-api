@@ -10,8 +10,7 @@ typescript REST api server.
 ## 1. Setup
 
 ```
-brew install openapi-generator
-touch firebase-admin.json // your firebase credentials.
+
 ```
 
 ## 2. Start
@@ -44,8 +43,3 @@ Generates seed data defined in the factory bot.
 ```shell
 sh scripts/seed.sh
 ```
-
-## 6. Authentication
-
-- https://firebase.google.com/docs/database/rest/auth?hl=ja
-- https://tools.ietf.org/html/rfc6750

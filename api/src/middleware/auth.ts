@@ -1,6 +1,6 @@
-import { Request, Response } from 'express'
+import { Request, Response, NextFunction } from 'express'
 
-export const auth = (req: Request, res: Response, next: any) => {
+export const auth = (req: Request, res: Response, next: NextFunction) => {
   const tokenHeader = req.headers.authorization
 
   if (!tokenHeader) {
