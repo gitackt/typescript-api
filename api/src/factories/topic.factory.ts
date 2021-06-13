@@ -1,6 +1,6 @@
 import Faker from 'faker'
 import { define } from 'typeorm-seeding'
-import { Topic } from '../domain/models/Topic'
+import { Topic } from '../models/Topic'
 
 define(Topic, (faker: typeof Faker) => {
   const title = faker.name.title()

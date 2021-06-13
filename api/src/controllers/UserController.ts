@@ -2,8 +2,8 @@ import { Request, Response } from 'express'
 import httpContext from 'express-http-context'
 
 import { User } from '../interfaces/api'
-import { User as UserModel } from '../domain/models/User'
-import { UserService } from '../domain/service/UserService'
+import { User as UserModel } from '../models/User'
+import { UserService } from '../service/UserService'
 
 export class UserController {
   private readonly userService: UserService

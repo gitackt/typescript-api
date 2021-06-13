@@ -19,7 +19,6 @@ services:
       - ./api:/app
     links:
       - db
-
   db:
     image: mysql:5.7
     environment:
@@ -31,7 +30,6 @@ services:
       - 3306:3306
     volumes:
       - database:/var/lib/mysql
-
   swagger-ui:
     image: swaggerapi/swagger-ui
     ports:
@@ -40,6 +38,5 @@ services:
       - ./api/openapi.yml:/openapi.yml
     environment:
       SWAGGER_JSON: /openapi.yml
-
 volumes:
   database:

@@ -45,7 +45,7 @@
       "@src/*": ["src/*"],
       "@test/*": ["__test__/*"],
       "@api/*": ["src/api/*"],
-      "@domain/*": ["src/domain/*"],
+      "@*": ["src/*"],
       "@logger/*": ["src/logger/*"]
     } /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */,
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */

@@ -262,7 +262,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * get users aaa
+         * get users
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -473,7 +473,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * get users aaa
+         * get users
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -563,7 +563,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.getUser(id, options).then((request) => request(axios, basePath));
         },
         /**
-         * get users aaa
+         * get users
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -654,7 +654,7 @@ export class DefaultApi extends BaseAPI {
     }
 
     /**
-     * get users aaa
+     * get users
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi

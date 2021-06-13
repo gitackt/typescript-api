@@ -28,12 +28,12 @@ export class TopicRepository {
   }
 
   async updateTopic(topic: Topic, user: User) {
-    const response = await this.topicRepository.update({ id: topic.id, user: user }, topic)
+    const response = await this.topicRepository.update({ id: topic.id || 0, user: user }, topic)
     return response
   }
 
   async deleteTopic(topic: Topic) {
-    const response = await this.topicRepository.delete({ id: topic.id })
+    const response = await this.topicRepository.delete({ id: topic.id || 0 })
     return response
   }
 }

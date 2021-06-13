@@ -1,9 +1,9 @@
 import { Request, Response } from 'express'
 import httpContext from 'express-http-context'
 
-import { TopicService } from '../domain/service/TopicService'
+import { TopicService } from '../service/TopicService'
 import { Topic, Category } from '../interfaces/api'
-import { Topic as TopicModel } from '../domain/models/Topic'
+import { Topic as TopicModel } from '../models/Topic'
 
 export class TopicController {
   private readonly topicService: TopicService

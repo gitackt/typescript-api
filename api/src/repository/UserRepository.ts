@@ -22,12 +22,12 @@ export class UserRepository {
   }
 
   async updateUser(user: User) {
-    const response = await this.userRepository.update({ id: user.id }, user)
+    const response = await this.userRepository.update({ id: user.id || 0 }, user)
     return response
   }
 
   async deleteUser(user: User) {
-    const response = await this.userRepository.delete({ id: user.id })
+    const response = await this.userRepository.delete({ id: user.id || 0 })
     return response
   }
 }
