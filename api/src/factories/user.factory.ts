@@ -8,11 +8,7 @@ define(User, (faker: typeof Faker) => {
   const lastName = faker.name.lastName(gender)
   const userName = faker.internet.userName(firstName, lastName)
   const email = userName + '@gmail.com'
-  const uuid = faker.random.uuid()
 
-  const user = new User()
-  user.name = `${firstName} ${lastName}`
-  user.email = email
-  user.uuid = uuid
+  const user = new User({ name: `${firstName} ${lastName}`, email })
   return user
 })

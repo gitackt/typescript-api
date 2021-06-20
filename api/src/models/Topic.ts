@@ -11,27 +11,36 @@ import {
 import { User } from './User'
 import { Category } from './Category'
 
+type ITopic = {
+  title: string
+  content: string
+}
+
 @Entity()
 export class Topic {
   @PrimaryGeneratedColumn()
   id?: number
 
   @Column()
-  title?: string
+  title: string
 
   @Column({ type: 'longtext' })
-  content?: string
+  content: string
+
+  @ManyToOne(type => User, user => user.topics)
+  user?: User
+
+  @ManyToOne(type => Category, category => category.topics)
+  category?: Category
+
+  constructor(obj: ITopic) {
+    this.title = obj.title
+    this.content = obj.content
+  }
 
   @CreateDateColumn()
   readonly createdAt?: Date
 
   @UpdateDateColumn()
   readonly updatedAt?: Date
-
-  @ManyToOne(type => User, user => user.topics)
-  user?: User
-
-  @ManyToMany(type => Category)
-  @JoinTable()
-  categories?: Category[]
 }

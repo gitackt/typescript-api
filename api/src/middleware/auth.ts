@@ -15,7 +15,6 @@ export const auth = (req: Request, res: Response, next: NextFunction) => {
   }
 
   const token = tokenHeader.split(' ')[1]
-  console.log(token)
 
   next()
 }

@@ -9,27 +9,34 @@ import {
 import { IsEmail } from 'class-validator'
 import { Topic } from './Topic'
 
+type IUser = {
+  name: string
+  email: string
+}
+
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
   id?: number
 
   @Column()
-  uuid?: string
-
-  @Column()
-  name?: string
+  name: string
 
   @Column()
   @IsEmail()
-  email?: string
+  email: string
+
+  @OneToMany(type => Topic, topic => topic.user)
+  topics?: Array<Topic>
+
+  constructor(obj: IUser) {
+    this.name = obj.name
+    this.email = obj.email
+  }
 
   @CreateDateColumn()
   readonly createdAt?: Date
 
   @UpdateDateColumn()
   readonly updatedAt?: Date
-
-  @OneToMany(type => Topic, topic => topic.user)
-  topics?: Topic[]
 }

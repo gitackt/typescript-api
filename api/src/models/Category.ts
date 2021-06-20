@@ -1,4 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm'
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+  OneToMany,
+} from 'typeorm'
+import { Topic } from './Topic'
 
 @Entity()
 export class Category {
@@ -7,6 +15,9 @@ export class Category {
 
   @Column()
   name?: string
+
+  @OneToMany(type => Topic, topic => topic.category)
+  topics?: Topic[]
 
   @CreateDateColumn()
   readonly createdAt?: Date

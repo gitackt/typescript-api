@@ -2,8 +2,8 @@ import { Request, Response } from 'express'
 import httpContext from 'express-http-context'
 
 import { TopicService } from '../service/TopicService'
-import { Topic, Category } from '../interfaces/api'
-import { Topic as TopicModel } from '../models/Topic'
+import { topicConverter, topicModelConverter } from '../converter/TopicConverter'
+import { Topic } from '../interfaces/api'
 
 export class TopicController {
   private readonly topicService: TopicService
@@ -46,26 +46,4 @@ export class TopicController {
     }
     res.status(200).send(topicConverter(topic))
   }
-}
-
-const topicConverter = (model: TopicModel): Topic => {
-  const response: Topic = {
-    id: model.id || 0,
-    userId: model.user?.id || 0,
-    title: model.title || '',
-    content: model.content || '',
-    createdAt: model.createdAt ? model.createdAt.toISOString() : '',
-    updatedAt: model.updatedAt ? model.updatedAt.toISOString() : '',
-  }
-  return response
-}
-
-const topicModelConverter = (topic: Topic): TopicModel => {
-  const response: TopicModel = {
-    title: topic.title || '',
-    content: topic.content || '',
-    createdAt: topic.createdAt ? new Date(topic.createdAt) : undefined,
-    updatedAt: topic.updatedAt ? new Date(topic.updatedAt) : undefined,
-  }
-  return response
 }

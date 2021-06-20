@@ -1,5 +1,5 @@
 import { createConnection, getConnectionOptions } from 'typeorm'
-import express, { Request, Response, NextFunction } from 'express'
+import express, { Request, Response, NextFunction, RequestHandler } from 'express'
 import httpContext from 'express-http-context'
 import cors from 'cors'
 import 'reflect-metadata'
@@ -34,7 +34,7 @@ const main = async () => {
       const app = express()
 
       app.use(cors())
-      app.use(json())
+      app.use(json() as RequestHandler)
       app.use(httpContext.middleware)
       app.use(httpLogger)
 
@@ -44,7 +44,6 @@ const main = async () => {
       app.use((req: Request, res: Response, next: NextFunction) => auth(req, res, next))
 
       app.get('/user', userController.user.bind(userController))
-      app.put('/user', userController.updateUser.bind(userController))
       app.post('/topics', topicController.createTopic.bind(topicController))
       app.put('/topics', topicController.updateTopic.bind(topicController))
 

@@ -51,17 +51,17 @@ export const httpLogger = (req: Request, res: Response, next: any) => {
 }
 
 export class DatabaseQueryLogger implements Logger {
-  logQuery(query: string, parameters?: any[]) {
+  logQuery(query: string, parameters: any[]) {
     const log: DBQuery = { query, parameters }
     sendLog(LogType.DatabaseQuery, log)
   }
 
-  logQueryError(error: string, query: string, parameters?: any[]) {
+  logQueryError(error: string, query: string, parameters: any[]) {
     const log: DBQuery = { query, parameters, error }
     sendLog(LogType.DatabaseQuery, log)
   }
 
-  logQuerySlow(time: number, query: string, parameters?: any[]) {
+  logQuerySlow(time: number, query: string, parameters: any[]) {
     const log: DBQuery = { query, parameters, time }
     sendLog(LogType.DatabaseQuery, log)
   }
