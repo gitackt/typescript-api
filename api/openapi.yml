@@ -41,22 +41,20 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/topic'
+    put:
+      description: put topic
+      operationId: put topic
+      requestBody:
+        $ref: '#/components/requestBodies/createTopic'
+      responses:
+        '200':
+          $ref: '#/components/responses/topic'
   /topics/{id}:
     get:
       description: get topic
       operationId: get topic
       parameters:
         - $ref: '#/components/parameters/id'
-      responses:
-        '200':
-          $ref: '#/components/responses/topic'
-    put:
-      description: put topic
-      operationId: put topic
-      parameters:
-        - $ref: '#/components/parameters/id'
-      requestBody:
-        $ref: '#/components/requestBodies/createTopic'
       responses:
         '200':
           $ref: '#/components/responses/topic'
