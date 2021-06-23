@@ -33,9 +33,9 @@ export class Topic {
   @ManyToOne(type => Category, category => category.topics)
   category?: Category
 
-  constructor(obj: ITopic) {
-    this.title = obj.title
-    this.content = obj.content
+  constructor(params: ITopic) {
+    this.title = params.title
+    this.content = params.content
   }
 
   @CreateDateColumn()

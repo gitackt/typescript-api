@@ -29,9 +29,9 @@ export class User {
   @OneToMany(type => Topic, topic => topic.user)
   topics?: Array<Topic>
 
-  constructor(obj: IUser) {
-    this.name = obj.name
-    this.email = obj.email
+  constructor(params: IUser) {
+    this.name = params.name
+    this.email = params.email
   }
 
   @CreateDateColumn()

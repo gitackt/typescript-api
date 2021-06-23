@@ -66,5 +66,5 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
   },
-  "exclude": ["node_modules", "src/app/__test__"]
+  "exclude": ["node_modules", "src/__test__"]
 }
